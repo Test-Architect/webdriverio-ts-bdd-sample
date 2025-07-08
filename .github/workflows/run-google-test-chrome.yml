@@ -28,23 +28,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22.16.0
+          node-version-file: '.nvmrc'
 
       - name: Install Dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
-      - name: Install Chrome for headless testing
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-      - name: Check Chrome version
-        run: google-chrome --version
-
       - name: Run WDIO Tests
         id: run-tests
-        run: npm run test-google-chrome
+        run: npm run test-google-chrome-headless
         continue-on-error: true # Ensures next steps run even if this fails
 
       - name: Upload Debug Screenshot on Failure
