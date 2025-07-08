@@ -46,6 +46,9 @@ npm run test-edge -- --spec ./tests/features/google-search.feature #using edge b
 # Or you can run test specified in the package script in package.json
 npm run test-google-chrome
 npm run test-google-edge
+
+# This repo updated with headless + cicd ready using Github action, sample included (.github/workflows folder) 😊
+npm run test-chrome-headless
 ```
 ---
 ## 🌱 Set Test Environment (Optional

@@ -15,6 +15,7 @@
     "test-edge": "cross-env TEST_ENV=dev wdio ./src/config/wdio.edge.conf.ts",
     "test-google-chrome": "cross-env TEST_ENV=dev wdio ./src/config/wdio.chrome.conf.ts --spec ./tests/features/google-search.feature",
     "test-google-edge": "cross-env TEST_ENV=qa wdio ./src/config/wdio.edge.conf.ts --spec ./tests/features/google-search.feature",
+    "test-chrome-headless": "cross-env TEST_ENV=dev_sample wdio ./src/config/wdio.chrome-headless.conf.ts --spec ./tests/features/login-form.feature",
     "open-allure": "npx allure generate --clean --output allure-report && allure open"
   }
 }

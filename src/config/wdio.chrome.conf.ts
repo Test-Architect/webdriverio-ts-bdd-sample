@@ -7,7 +7,11 @@ export const config: WebdriverIO.Config = {
             browserName: "chrome",
             'goog:chromeOptions': {
                 args: [
-                    '--disable-blink-features=AutomationControlled'
+                    '--no-sandbox',
+                    '--disable-gpu',
+                    '--disable-dev-shm-usage',
+                    '--disable-blink-features=AutomationControlled',
+                    '--window-size=1600,1200',
                 ]
             }
         }
