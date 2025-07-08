@@ -6,6 +6,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -29,19 +30,23 @@ jobs:
         with:
           node-version: 22.16.0
 
-      - name: Install Depedencies
+      - name: Install Dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Install Chrome for headless testing
         run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
+          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+
+      - name: Check Chrome version
+        run: google-chrome --version
 
       - name: Test Execution
         run: npm run test-google-chrome-headless
 
-      - name: 'Debug Screenshot'
+      - name: Upload Debug Screenshot
         uses: actions/upload-artifact@v4
         with:
           name: debug-screenshot
