@@ -44,7 +44,7 @@ jobs:
 
       - name: Run WDIO Tests
         id: run-tests
-        run: npm run test-google-chrome-headless
+        run: npm run test-google-chrome
         continue-on-error: true # Ensures next steps run even if this fails
 
       - name: Upload Debug Screenshot on Failure
