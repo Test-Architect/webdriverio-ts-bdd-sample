@@ -21,7 +21,8 @@ class GoogleHomePage extends BasePage {
 
     async search(terms: string) {
         await this.searchBox.setValue(terms);
-        await browser.keys(Key.Enter);
+        await driver.keys("Enter")
+        // await browser.keys(Key.Enter);
     }
 
     async getResultStats(): Promise<boolean> {

@@ -36,9 +36,8 @@ jobs:
 
       - name: Install Chrome for headless testing
         run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt-get update
-          sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
+          sudo apt-get install -y google-chrome-stable
 
       - name: Check Chrome version
         run: google-chrome --version
@@ -46,7 +45,7 @@ jobs:
       - name: Run WDIO Tests
         id: run-tests
         run: npm run test-google-chrome-headless
-        continue-on-error: true  # Ensures next steps run even if this fails
+        continue-on-error: true # Ensures next steps run even if this fails
 
       - name: Upload Debug Screenshot on Failure
         if: steps.run-tests.outcome == 'failure'
