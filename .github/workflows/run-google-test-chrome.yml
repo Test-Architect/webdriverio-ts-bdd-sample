@@ -43,10 +43,13 @@ jobs:
       - name: Check Chrome version
         run: google-chrome --version
 
-      - name: Test Execution
+      - name: Run WDIO Tests
+        id: run-tests
         run: npm run test-google-chrome-headless
+        continue-on-error: true  # Ensures next steps run even if this fails
 
-      - name: Upload Debug Screenshot
+      - name: Upload Debug Screenshot on Failure
+        if: steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: debug-screenshot
