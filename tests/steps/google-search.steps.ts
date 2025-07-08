@@ -12,6 +12,7 @@ When("I search for {string}", async (term: string) => {
 });
 
 Then("I see the results", async () => {
+    await browser.saveScreenshot("DEBUG.jpg");
     await googleHomePage.waitForIsShown();
     let isThereAnyResults = await googleHomePage.getResultStats();
     expect(isThereAnyResults).toEqual(true);

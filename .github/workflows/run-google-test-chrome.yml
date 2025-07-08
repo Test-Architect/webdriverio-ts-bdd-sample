@@ -40,3 +40,9 @@ jobs:
 
       - name: Test Execution
         run: npm run test-google-chrome-headless
+
+      - name: 'Debug Screenshot'
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshot
+          path: DEBUG.jpg
